@@ -245,34 +245,5 @@ function createTask(taskContent, taskFav, taskDone){
         task.remove();
     })
 
-    //Add more button
-    let moreBtn = document.createElement("img");
-    moreBtn.className += "more-btn item-btn";
-    moreBtn.src = "assets/more.svg";
-
-    right.append(favoriteBtn, deleteBtn, moreBtn);
+    right.append(favoriteBtn, deleteBtn);
 }
-
-
-
-
-// for(const i in memory) {
-//     if ((memory[i].description == taskContent) == true) {
-
-//      if (memory[i].fav == false) {
-//          favoriteBtn.classList += " checked";
-
-//          memory[i].fav = true;
-//      } else if (memory[i].fav == true) {
-//          favoriteBtn.classList = "favorite-btn item-btn";
-
-//          memory[i].fav = false;
-//      }
-
-//     }
-
-
-//  }
-
-
-
