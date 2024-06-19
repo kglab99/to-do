@@ -39,15 +39,51 @@ function ListItem(description, fav, done) {
 // DOM LISTENERS
 let addButton = document.querySelector("div#add > button").addEventListener("click", addTask);
 
+// Enter support
+document.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        addTask();
+    }
+});
+
 // FUNCTIONS FOR DOM LISTENERS
+
 function addTask() {
     let description = document.querySelector("div#add > input").value;
-    document.querySelector("div#add > input").value = "";
+   
+  
+    if (description != '') {
+        if (memory.length != 0) {
+            let isValuePresent = false;
+            
+            for (const i of memory) {
+                if(i.description == description) {
+                    isValuePresent = true;
+                    document.querySelector("div#add > input").value = "";
+                    document.querySelector("div#add > input").placeholder = "Can't add duplicate task";
+                }
+            };
 
-    createTask(description, false, false);
-    memory.push(new ListItem(description, false, false));
-    localStorage.memory = JSON.stringify(memory);
+            if (isValuePresent == false) {
+                document.querySelector("div#add > input").value = "";
+                createTask(description, false, false);
+                memory.push(new ListItem(description, false, false));
+                localStorage.memory = JSON.stringify(memory);
 
+            }
+
+
+        } else if (memory.length == 0) {
+                        document.querySelector("div#add > input").value = "";
+                        console.log(memory);
+        
+                        createTask(description, false, false);
+                        memory.push(new ListItem(description, false, false));
+                        localStorage.memory = JSON.stringify(memory);
+        }
+
+    }
 }
 
 // * 2 *
@@ -216,3 +252,27 @@ function createTask(taskContent, taskFav, taskDone){
 
     right.append(favoriteBtn, deleteBtn, moreBtn);
 }
+
+
+
+
+// for(const i in memory) {
+//     if ((memory[i].description == taskContent) == true) {
+
+//      if (memory[i].fav == false) {
+//          favoriteBtn.classList += " checked";
+
+//          memory[i].fav = true;
+//      } else if (memory[i].fav == true) {
+//          favoriteBtn.classList = "favorite-btn item-btn";
+
+//          memory[i].fav = false;
+//      }
+
+//     }
+
+
+//  }
+
+
+
