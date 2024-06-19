@@ -20,7 +20,7 @@ div#header {
 div#tasks {
   display: flex;
   flex-direction: column;
-  margin: 0vw 10vw 0vw 10vw;
+  margin: 0vw 10vw 15vh 10vw;
   gap: 2vh;
 
  
@@ -242,11 +242,21 @@ div.left {
   
 }
 
+div.add {
+  position: fixed;
+  bottom: 0vh;
+  background-color: #131313;
+  width: 100vw;
+  height: 11vh;
+
+  
+}
+
+
 #add {
-  position: absolute;
-  bottom: 7vh;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  position: fixed;
+  bottom: 2vh;
+  margin: 0vh 10vw 0vh 10vw;
   left: 0;
   right: 0;
   color: white;
@@ -289,8 +299,36 @@ div.left {
 
   }
 
-  button > img {
-      /* padding-right: 10px; */
+}
+
+
+@media screen and (max-width: 800px) {
+  
+  h1 {
+    font-size: 1.5em;
   }
 
+  div#header > button.logo {
+    font-size: 1em;
+  }
+
+  div.task {
+    font-size: 0.9em;
+  }
+
+  div.left {
+    padding-left: 2vw;
+  }
+
+  div#add > input {
+    font-size: 0.8em;
+  }
+
+  div#add > button {
+    width: 5em;
+  }
+
+  footer {
+    bottom: 12px;
+  }
 }
